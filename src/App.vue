@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+   
+      <h1 > Topotrade.com </h1>
+
+      
+    <TabView :activeIndex="activeIndex">
+      <TabPanel header="Login">
+        <Login/>
+      </TabPanel>
+      <TabPanel header="Register">
+        <Register/>
+      </TabPanel>
+      
+    </TabView>
+
+    <!-- <router-link to="/">Register</router-link> |
+    <router-link to="/login">Login</router-link> -->
+
+  </div>
+  <!-- <router-view/> -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  import Login from './components/Login.vue'
+  import Register from './components/Register.vue'
+  export default {
+    name: 'App',
+    components: {
+      Login,
+      Register
+    }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
