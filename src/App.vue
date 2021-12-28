@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-   
-      <h1 > Topotrade.com </h1>
-
+    <div class="title">
+      <h1> Topotrade.com </h1>
+    </div>
       
     <TabView :activeIndex="activeIndex">
       <TabPanel header="Login">
@@ -25,6 +25,7 @@
 
   import Login from './components/Login.vue'
   import Register from './components/Register.vue'
+  
   export default {
     name: 'App',
     components: {
@@ -36,5 +37,8 @@
 </script>
 
 <style>
-
+  .title {
+    margin: 10px;
+    margin-bottom: 20px;
+  }
 </style>

@@ -4,19 +4,24 @@
 
     <div style="width:200px; margin:0 auto">
 
-      <span class="p-float-label input_" >
-        <InputText id="email" type="email" v-model="email" />
-        <label for="email">Email</label>
-      </span>
-      
-      <span class="p-float-label input_"  >
-        <InputText id="password" type="password" v-model="password" />
-        <label for="password">Password</label>
-      </span>
+      <form @submit.prevent="handleLogin" >
 
-      
-      <Button label="Login" class="p-button-outlined" />
+        <span class="p-float-label input_" >
+          <InputText id="email" type="email" v-model="email" />
+          <label for="email">Email</label>
+          
+        </span>
+        
+        <span class="p-float-label input_"  >
+          <InputText id="password" type="password" v-model="password" />
+          <label for="password">Password</label>
+          
+        </span>
 
+        <Button label="Login" class="p-button-outlined" type="submit" :disabled="loading" />
+
+      </form>
+      
     </div>
 
 </template>
@@ -30,6 +35,33 @@ export default {
         password: "",
       };
     },
+
+  computed: {
+    loggedIn() {
+      return this.$store.state.auth.status.loggedIn;
+    },
+  },
+
+  created() {
+    if (this.loggedIn) {
+      this.$router.push("/admin-panel");
+    }
+  },
+
+   methods: {
+    handleLogin(user) {
+      this.loading = true;
+
+      this.$store.dispatch("auth/login", user).then(
+        () => {
+          this.$router.push("/admin-panel");
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+  },
 }
 </script>
 
@@ -40,6 +72,6 @@ export default {
     .input_ {
       
       display: block;
-      margin: 10px 0px !important;
+      margin: 30px 0px !important;
     }
 </style>

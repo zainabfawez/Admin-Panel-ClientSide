@@ -2,6 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import router from './router'
+import store from "./store";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import PrimeVue from 'primevue/config'
 import 'primevue/resources/primevue.min.css'
@@ -22,7 +25,10 @@ app.component("TabView", TabView);
 app.component("TabPanel", TabPanel);
 app.component("Button", Button);
 
-app.use(router).mount('#app')
+app
+    .use(router)
+    .use(store)
+    .mount('#app')
 
 
 
