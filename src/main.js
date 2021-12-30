@@ -3,19 +3,14 @@ import App from './App.vue'
 
 import router from './router'
 import store from "./store";
+
+
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import PrimeVue from 'primevue/config'
 import 'primevue/resources/primevue.min.css'
 import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'
 import 'primeicons/primeicons.css'
-
-import Login from './components/Login.vue'
-import Register from './components/Register.vue'
-import AdminPanel from './components/AdminPanel.vue'
-import CustomerPage from './components/CustomerPage.vue'
-
+import PrimeVue from 'primevue/config'
 import InputText from "primevue/inputtext"
 import TabView from 'primevue/tabview'
 import TabPanel from 'primevue/tabpanel'
@@ -24,6 +19,12 @@ import Card from 'primevue/card';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Paginator from 'primevue/paginator';
+
+import Login from './components/Login.vue'
+import Register from './components/Register.vue'
+import AdminPanel from './components/AdminPanel.vue'
+import CustomerPage from './components/CustomerPage.vue'
+
 
 const app = createApp(App);
 
