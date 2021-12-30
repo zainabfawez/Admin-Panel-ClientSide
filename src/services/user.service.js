@@ -3,17 +3,18 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:8080/api/admin/';
+const API_URL = 'http://localhost:8000/api/admin/';
 
+ 
 class UserService{
 
-    getFilteredCustomers(input, nbOfRows){
+    getFilteredCustomers(email, first_name, pagination_option, page){
         return axios
-            .get(API_URL + 'get_filtered_customers', { 
+            .get(API_URL + 'get_filtered_customers/' + pagination_option +'?page='+ page , { 
                 headers: authHeader(),
                 params: {
-                    input : input,
-                    nbOfRows : nbOfRows, 
+                    email : email,
+                    first_name : first_name, 
                 }
             });
             

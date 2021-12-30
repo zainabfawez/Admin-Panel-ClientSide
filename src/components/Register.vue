@@ -4,7 +4,7 @@
 
     <div style="width:200px; margin:0 auto">
 
-      <form @submit.prevent="handleRegistration">
+      <form @submit.prevent="handleRegistration({first_name, last_name, email, password})">
 
         <span class="p-float-label input_" >
           <InputText id="first-name" type="text" v-model="first_name" />
@@ -26,13 +26,10 @@
           <label for="password">Password</label>
         </span>
 
-        <span class="p-float-label input_"  >
-          <InputText id="password-confirmation" type="password" v-model="password_confirmation" />
-          <label for="password-confirmation">Confirm Password</label>
-        </span>
-
         <Button label="Register" class="p-button-outlined" type= "submit" />
 
+        <label> {{message}} </label>
+ 
       </form>
 
     </div>
@@ -48,13 +45,24 @@ export default {
         last_name: "",
         email: "",
         password: "",
-        password_confirmation: "",
+        message: "",
       };
     },
+    methods: {
+      handleRegistration(user) {
+        this.$store.dispatch("register", user).then(
+          () => {
+            this.message = "Registration Success! Back to login please ";
+          },
+          () => {
+            this.message = "Registration Failed";
+          }
+        );
+      },
+  },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
     h2 {text-align: center;}
 
